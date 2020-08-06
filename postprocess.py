@@ -61,7 +61,7 @@ for i in range(len(embs)):
     preprocess_sum = [0] * dimension
     for j in range(N):
         princip = np.array(pca.components_[j])
-        preprocess = princip.dot(np.array(embs[i]))
+        preprocess = princip.dot(embs[i])
         preprocess_vec = [princip[k] * preprocess for k in range(len(princip))]
         preprocess_sum = [preprocess_sum[k] + preprocess_vec[k] for k in range(len(preprocess_sum))]
     embs[i] = np.array([embs[i][j] - preprocess_sum[j] for j in range(len(preprocess_sum))])
